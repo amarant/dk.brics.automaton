@@ -28,9 +28,7 @@
  */
 package dk.brics.automaton.test;
 
-import dk.brics.automaton.AutomatonMatcher;
-import dk.brics.automaton.RegExp;
-import dk.brics.automaton.RunAutomaton;
+import dk.brics.automaton.*;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -222,4 +220,14 @@ public class TestAutomatonMatcher {
 			Assert.fail("Java didn't match, but automaton did. Automaton start: " + automatonMatcher.start() + " Automaton end: " + automatonMatcher.end() + " matched sequence: '" + automatonMatcher.group() + "'");
 		}
 	}
+
+    @Test
+    public void intersection()
+    {
+        Xeger xeger = new Xeger("[A-Z0-9]*:[A-Z0-9\\-]{15}");
+        xeger.AddIntersection("APP6B:.*");
+        xeger.AddIntersection(".*:S.(G.E|A*MH----|A*MFQ---).*");
+        System.out.println(xeger.generate());
+        //automatonIntersec.
+    }
 }
